@@ -75,8 +75,8 @@
       "category": "testing",
       "description": "Test pyramid enforcement and coverage trending",
       "priority": 2,
-      "status": "pending",
-      "passes": false,
+      "status": "complete",
+      "passes": true,
       "dependencies": [],
       "files": [".claude/skills/test-strategy/SKILL.md", "src/test_analyzer.py"],
       "tests": ["tests/test_test_analyzer.py"]
@@ -141,8 +141,8 @@
       "category": "metrics",
       "description": "Metrics collection and performance tracking",
       "priority": 2,
-      "status": "pending",
-      "passes": false,
+      "status": "complete",
+      "passes": true,
       "dependencies": [],
       "files": [".claude/skills/metrics-collector/SKILL.md", "src/metrics.py"],
       "tests": ["tests/test_metrics.py"]

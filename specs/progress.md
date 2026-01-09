@@ -188,3 +188,64 @@
 **Lint:** Clean
 
 ---
+
+### F007: Test Pyramid Enforcement and Coverage Trending (COMPLETE)
+
+**Approach:**
+- Created `src/test_analyzer.py` with full TDD cycle
+- Implemented TestType enum (UNIT, INTEGRATION, E2E)
+- Implemented TestResult for tracking individual test outcomes
+- Implemented TestPyramid for pyramid health assessment
+- Implemented CoverageTrend for coverage trending
+- Implemented TestAnalyzer as main analysis class
+
+**Files Created:**
+- `src/test_analyzer.py` - Core test analyzer module (450 lines)
+- `tests/test_test_analyzer.py` - Comprehensive tests (28 tests, all passing)
+- `.claude/skills/test-strategy/SKILL.md` - Test strategy skill
+
+**Key Features:**
+- Test classification by path patterns
+- Pyramid health check (unit > integration > e2e)
+- Coverage trending (improving/declining/stable)
+- Flaky test candidate detection
+- Pyramid enforcement with violations
+- Test discovery and categorization
+- Test impact mapping
+
+**Tests:** 28/28 passing
+**Lint:** Clean
+
+---
+
+### F013: Metrics Collection and Performance Tracking (COMPLETE)
+
+**Approach:**
+- Created `src/metrics.py` with full TDD cycle
+- Implemented MetricType enum for metric categories
+- Implemented MetricValue for individual measurements
+- Implemented MetricsCollector for aggregation
+- Implemented SessionMetrics for session-level tracking
+- Implemented PerformanceTracker for timing analysis
+
+**Files Created:**
+- `src/metrics.py` - Core metrics module (400 lines)
+- `tests/test_metrics.py` - Comprehensive tests (25 tests, all passing)
+
+**Key Features:**
+- 12 metric types (iterations, tokens, features, tests, bugs, errors, etc.)
+- Metric recording with timestamps and metadata
+- Counter metrics with increment
+- Aggregations: sum, average, latest
+- Session metrics with duration tracking
+- Feature start/complete tracking
+- Error tracking by type
+- Performance timing with context manager
+- Tokens per feature tracking
+- Efficiency metrics (tokens/min, features/hr)
+- JSON export and persistence
+
+**Tests:** 25/25 passing
+**Lint:** Clean
+
+---

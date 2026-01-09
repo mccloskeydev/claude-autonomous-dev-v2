@@ -1,0 +1,12 @@
+{
+  "session_id": "test-session",
+  "progress_summary": "Test progress",
+  "hot_context": {
+    "current": "task1"
+  },
+  "warm_context": {
+    "recent": "decision1"
+  },
+  "cold_context": {},
+  "created_at": 1767989380.7699041
+}
