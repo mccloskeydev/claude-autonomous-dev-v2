@@ -440,3 +440,39 @@ The context_manager.py module includes full HOT/WARM/COLD tier support with:
 **Lint:** Clean
 
 ---
+
+### F014: Self-Optimization Based on Outcomes (COMPLETE)
+
+**Approach:**
+- Created `src/self_optimizer.py` with full TDD cycle
+- Implemented OutcomeType enum for outcome categories
+- Implemented OptimizationStrategy enum for optimization methods
+- Implemented Outcome dataclass for recording results
+- Implemented ParameterRange for valid parameter bounds
+- Implemented TuningParameter with history tracking
+- Implemented SelfOptimizer as main optimization class
+
+**Files Created:**
+- `src/self_optimizer.py` - Core self optimizer module (380+ lines)
+- `tests/test_self_optimizer.py` - Comprehensive tests (25 tests, all passing)
+
+**Key Features:**
+- Outcome types (SUCCESS, FAILURE, PARTIAL, TIMEOUT)
+- Optimization strategies (HILL_CLIMBING, SIMULATED_ANNEALING, RANDOM_SEARCH, GRADIENT_DESCENT)
+- Parameter registration with min/max/step bounds
+- Parameter value clamping
+- Parameter history tracking
+- Outcome recording with context
+- Success rate calculation
+- Parameter recommendations based on outcome patterns
+- Optimization step execution
+- Correlation analysis between parameters and outcomes
+- Adjustable learning rate
+- Strategy selection
+- JSON persistence
+- Integration with metrics from F013
+
+**Tests:** 25/25 passing
+**Lint:** Clean
+
+---

@@ -152,11 +152,11 @@
       "category": "metrics",
       "description": "Self-optimization based on outcomes",
       "priority": 3,
-      "status": "pending",
-      "passes": false,
+      "status": "complete",
+      "passes": true,
       "dependencies": ["F013"],
-      "files": [".claude/skills/self-optimizer/SKILL.md"],
-      "tests": []
+      "files": ["src/self_optimizer.py"],
+      "tests": ["tests/test_self_optimizer.py"]
     },
     {
       "id": "F015",
