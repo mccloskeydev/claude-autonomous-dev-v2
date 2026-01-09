@@ -60,3 +60,33 @@
 **Lint:** Clean
 
 ---
+
+### F009: Error Classification and Strategy Selection (COMPLETE)
+
+**Approach:**
+- Created `src/error_classifier.py` with full TDD cycle
+- Implemented ErrorType enum for 12 error categories
+- Implemented ErrorSeverity for prioritization
+- Implemented RecoveryStrategy for recovery approaches
+- Implemented ErrorSignature for normalized error comparison
+- Implemented RecoveryPlaybook with step-by-step guides
+- Implemented ErrorClassifier as main classification class
+
+**Files Created:**
+- `src/error_classifier.py` - Core error classifier module (470+ lines)
+- `tests/test_error_classifier.py` - Comprehensive tests (34 tests, all passing)
+- `.claude/skills/error-classifier/SKILL.md` - Error classifier skill
+
+**Key Features:**
+- Classifies errors into 12 types (syntax, import, type, runtime, test, etc.)
+- Severity levels: LOW, WARNING, HIGH, CRITICAL
+- Recovery strategies: retry, fix code, install dep, check env, debug, escalate
+- Error signature normalization (ignores line numbers, paths, specific values)
+- Similar error detection and occurrence counting
+- Escalation thresholds per error type
+- Recovery playbooks with step-by-step instructions
+
+**Tests:** 34/34 passing
+**Lint:** Clean
+
+---
