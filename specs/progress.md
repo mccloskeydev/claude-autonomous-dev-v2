@@ -122,3 +122,35 @@
 **Lint:** Clean
 
 ---
+
+### F005: Feature Dependency Graph and Priority Scoring (COMPLETE)
+
+**Approach:**
+- Created `src/dependency_graph.py` with full TDD cycle
+- Implemented Feature dataclass with status, priority, dependencies
+- Implemented DependencyGraph for graph construction and analysis
+- Implemented CriticalPathAnalyzer for finding critical paths
+- Implemented ExecutionPlanner for sequential/parallel planning
+- Added Mermaid diagram generation for visualization
+
+**Files Created:**
+- `src/dependency_graph.py` - Core dependency graph module (380 lines)
+- `tests/test_dependency_graph.py` - Comprehensive tests (23 tests, all passing)
+- `.claude/skills/dependency-analyzer/SKILL.md` - Dependency analyzer skill
+
+**Key Features:**
+- Dependency graph construction from features.json
+- Circular dependency detection with cycle enumeration
+- Topological sorting for valid execution order
+- Ready/blocked feature identification
+- Critical path analysis for project scheduling
+- Priority scoring: base + blocking_factor + critical_path_bonus
+- Sequential execution planning
+- Parallel execution planning (waves)
+- Next feature recommendation
+- Mermaid diagram generation with status coloring
+
+**Tests:** 23/23 passing
+**Lint:** Clean
+
+---
