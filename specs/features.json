@@ -31,11 +31,11 @@
       "category": "context",
       "description": "Automatic context pressure monitoring and checkpointing",
       "priority": 2,
-      "status": "pending",
-      "passes": false,
+      "status": "complete",
+      "passes": true,
       "dependencies": [],
-      "files": [".claude/skills/context-manager/SKILL.md", ".claude/hooks/pre-compact.sh"],
-      "tests": []
+      "files": [".claude/skills/context-manager/SKILL.md", ".claude/hooks/pre-compact.sh", "src/context_manager.py"],
+      "tests": ["tests/test_context_manager.py"]
     },
     {
       "id": "F004",

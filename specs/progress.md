@@ -90,3 +90,35 @@
 **Lint:** Clean
 
 ---
+
+### F003: Context Pressure Monitoring and Checkpointing (COMPLETE)
+
+**Approach:**
+- Created `src/context_manager.py` with full TDD cycle
+- Implemented ContextPressure for monitoring usage levels
+- Implemented ContextTier enum (HOT/WARM/COLD) for hierarchical memory
+- Implemented ContextEntry for tracking individual context items
+- Implemented ContextCheckpoint for saving/loading state
+- Implemented ContextManager as main orchestration class
+- Created pre-compact.sh hook for automatic checkpointing
+
+**Files Created:**
+- `src/context_manager.py` - Core context manager module (440 lines)
+- `tests/test_context_manager.py` - Comprehensive tests (35 tests, all passing)
+- `.claude/skills/context-manager/SKILL.md` - Context manager skill
+- `.claude/hooks/pre-compact.sh` - Pre-compaction checkpoint hook
+
+**Key Features:**
+- Pressure levels: low (<30%), medium (30-70%), high (70-90%), critical (>90%)
+- Hierarchical tiers: HOT (3min), WARM (30min), COLD (24hr)
+- Automatic tier demotion for stale entries
+- Token estimation (~4 chars/token)
+- Checkpoint creation with session ID and progress summary
+- Checkpoint restoration and cleanup
+- Context compression for verbose entries
+- Pressure callback for threshold alerts
+
+**Tests:** 35/35 passing
+**Lint:** Clean
+
+---
