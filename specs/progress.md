@@ -154,3 +154,37 @@
 **Lint:** Clean
 
 ---
+
+### F002: Multi-level Circuit Breakers (COMPLETE)
+
+**Approach:**
+- Created `src/circuit_breaker.py` with full TDD cycle
+- Implemented CircuitBreakerLevel enum (TOKEN, PROGRESS, QUALITY, TIME)
+- Implemented CircuitBreakerState for state machine (CLOSED/OPEN/HALF_OPEN)
+- Implemented TokenCircuitBreaker for context limit monitoring
+- Implemented ProgressCircuitBreaker for no-progress detection
+- Implemented QualityCircuitBreaker for test degradation detection
+- Implemented TimeCircuitBreaker for wall clock limits
+- Implemented MultiLevelCircuitBreaker combining all levels
+- Created circuit-breaker.sh hook for shell integration
+
+**Files Created:**
+- `src/circuit_breaker.py` - Core circuit breaker module (430 lines)
+- `tests/test_circuit_breaker.py` - Comprehensive tests (31 tests, all passing)
+- `.claude/hooks/circuit-breaker.sh` - Shell hook for circuit breaker checks
+
+**Key Features:**
+- Four circuit breaker levels: token, progress, quality, time
+- State machine: CLOSED -> OPEN -> HALF_OPEN -> CLOSED
+- Token level: trips at 90% usage, warns at 70%
+- Progress level: trips after N iterations without file changes
+- Quality level: trips when test failures are monotonically increasing
+- Time level: trips at wall clock limit, warns at 80%
+- Multi-level breaker checks all levels in order
+- Integration with loop control and error classifier
+- Recovery via half-open state and probe
+
+**Tests:** 31/31 passing
+**Lint:** Clean
+
+---

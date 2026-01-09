@@ -20,11 +20,11 @@
       "category": "core",
       "description": "Multi-level circuit breakers (token, progress, quality, time)",
       "priority": 1,
-      "status": "pending",
-      "passes": false,
+      "status": "complete",
+      "passes": true,
       "dependencies": ["F001"],
-      "files": [".claude/hooks/circuit-breaker.sh"],
-      "tests": []
+      "files": [".claude/hooks/circuit-breaker.sh", "src/circuit_breaker.py"],
+      "tests": ["tests/test_circuit_breaker.py"]
     },
     {
       "id": "F003",
