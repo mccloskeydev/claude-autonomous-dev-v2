@@ -249,3 +249,35 @@
 **Lint:** Clean
 
 ---
+
+### F008: Flaky Test Detection and Quarantine (COMPLETE)
+
+**Approach:**
+- Created `src/flaky_detector.py` with full TDD cycle
+- Implemented TestRun dataclass for individual run tracking
+- Implemented TestHistory for per-test run history with flakiness scoring
+- Implemented FlakyTestCandidate for identifying flaky tests
+- Implemented QuarantineStatus enum for test lifecycle management
+- Implemented FlakyDetector as main detection class
+
+**Files Created:**
+- `src/flaky_detector.py` - Core flaky detector module (380+ lines)
+- `tests/test_flaky_detector.py` - Comprehensive tests (32 tests, all passing)
+
+**Key Features:**
+- Test run recording with duration and error messages
+- Pass/fail rate calculation per test
+- Flakiness score based on pass/fail transitions
+- Automatic quarantine for highly flaky tests
+- Probation status for tests being verified
+- Configurable thresholds (flakiness, min_runs)
+- Pytest output parsing for automatic run recording
+- Most flaky tests ranking
+- Old run cleanup based on retention period
+- JSON persistence for tracking across sessions
+- Integration with test_analyzer from F007
+
+**Tests:** 32/32 passing
+**Lint:** Clean
+
+---
