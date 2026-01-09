@@ -281,3 +281,37 @@
 **Lint:** Clean
 
 ---
+
+### F010: Root Cause Analysis Automation (COMPLETE)
+
+**Approach:**
+- Created `src/root_cause_analyzer.py` with full TDD cycle
+- Implemented EvidenceType enum for evidence classification
+- Implemented Evidence dataclass for tracking analysis evidence
+- Implemented Hypothesis for root cause hypotheses with confirmation
+- Implemented CausalChain for building cause-effect chains
+- Implemented RootCause for final determination with fix suggestions
+- Implemented Investigation for tracking analysis state
+- Implemented RootCauseAnalyzer as main analysis class
+
+**Files Created:**
+- `src/root_cause_analyzer.py` - Core root cause analyzer module (560+ lines)
+- `tests/test_root_cause.py` - Comprehensive tests (36 tests, all passing)
+
+**Key Features:**
+- Evidence collection from error messages and tracebacks
+- 7 evidence types (error_message, stack_trace, log_entry, etc.)
+- Hypothesis generation based on error patterns
+- Confidence scoring for hypotheses
+- Causal chain construction from traceback
+- Fix suggestions based on error type
+- Investigation workflow (open -> in_progress -> concluded)
+- File extraction from tracebacks
+- Error type categorization
+- Integration with error classifier from F009
+- JSON persistence for investigations
+
+**Tests:** 36/36 passing
+**Lint:** Clean
+
+---
