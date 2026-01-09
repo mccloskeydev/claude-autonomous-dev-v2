@@ -403,3 +403,40 @@ The context_manager.py module includes full HOT/WARM/COLD tier support with:
 **Lint:** Clean
 
 ---
+
+### F012: Agent Communication Protocol (COMPLETE)
+
+**Approach:**
+- Created `src/agent_protocol.py` with full TDD cycle
+- Implemented MessageType enum for message categories
+- Implemented MessagePriority for priority ordering
+- Implemented Message dataclass with auto-generated ID and timestamp
+- Implemented MessageBus for pub/sub communication
+- Implemented AgentProtocol for standardized messaging
+
+**Files Created:**
+- `src/agent_protocol.py` - Core agent protocol module (300+ lines)
+- `tests/test_agent_protocol.py` - Comprehensive tests (26 tests, all passing)
+
+**Key Features:**
+- 8 message types (task_assignment, task_completion, status_update, etc.)
+- Priority levels (CRITICAL, HIGH, NORMAL, LOW)
+- Auto-generated message IDs and timestamps
+- Reply-to support for request-response patterns
+- MessageBus with priority queue delivery
+- Subscribe/unsubscribe for agents
+- Broadcast messages (recipient="*")
+- Message history tracking
+- AgentProtocol helper methods:
+  - send_task_completion
+  - send_status_update
+  - send_error_report
+  - request_work_steal
+  - send_heartbeat
+- JSON persistence for message history
+- Integration with parallel executor from F011
+
+**Tests:** 26/26 passing
+**Lint:** Clean
+
+---
