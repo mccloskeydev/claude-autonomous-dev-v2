@@ -168,6 +168,21 @@
       "dependencies": ["F001", "F002", "F003", "F005", "F009", "F011", "F013"],
       "files": [".claude/skills/orchestrator/SKILL.md"],
       "tests": []
+    },
+    {
+      "id": "F016",
+      "category": "workflow",
+      "description": "Discovery phase for requirements analysis before planning",
+      "priority": 1,
+      "status": "complete",
+      "passes": true,
+      "dependencies": [],
+      "files": [
+        "src/requirements_analyzer.py",
+        ".claude/skills/discovery/SKILL.md",
+        ".claude/skills/build-new-project/SKILL.md"
+      ],
+      "tests": ["tests/test_requirements_analyzer.py"]
     }
   ]
 }

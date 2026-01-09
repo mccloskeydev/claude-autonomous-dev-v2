@@ -14,6 +14,7 @@ This project is configured for **long-running autonomous development sessions**.
 ### Phase Commands
 | Command | Purpose |
 |---------|---------|
+| `/project:discovery "<task>"` | Analyze requirements & ask questions |
 | `/project:plan "<task>"` | Generate & evaluate approaches |
 | `/project:architect "<plan>"` | Detailed technical design |
 | `/project:implement "<feature>"` | TDD implementation |
@@ -26,8 +27,18 @@ This project is configured for **long-running autonomous development sessions**.
 
 ### Standard Cycle
 ```
-Plan → Architect → Implement (TDD) → Test → Fix → Simplify → Verify
+Discover → Plan → Architect → Implement (TDD) → Test → Fix → Simplify → Verify
 ```
+
+### Discovery Phase (NEW)
+Before planning, ensure we understand:
+- **What** is the actual problem?
+- **Why** does this problem exist?
+- **Who** is affected?
+- **What** does success look like?
+- **What** constraints exist?
+
+Use `/project:discovery` or the RequirementsAnalyzer module.
 
 ### Autonomous Loop Behavior
 1. You work on tasks iteratively

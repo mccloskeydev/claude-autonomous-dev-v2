@@ -3,7 +3,7 @@ name: build-new-project
 description: |
   Main orchestrator for autonomous long-running development. Use when starting a new project
   or feature from scratch. Triggers: "build", "create project", "new project", "implement from scratch".
-  Runs full cycle: plan alternatives → architect → TDD implement → test → fix → simplify → iterate.
+  Runs full cycle: discover → plan alternatives → architect → TDD implement → test → fix → simplify → iterate.
 allowed-tools:
   - Task
   - Bash
@@ -47,26 +47,71 @@ Started: <timestamp>
 
 3. **Read project.config.json** to determine stack and commands.
 
-## Phase 1: Planning (Use /project:plan)
+## Phase 1: Discovery (Use /project:discovery)
+
+**NEW: Ensure we understand the problem before solving it.**
+
+Use the RequirementsAnalyzer to assess the task description:
+
+```python
+from src.requirements_analyzer import RequirementsAnalyzer
+
+analyzer = RequirementsAnalyzer()
+result = analyzer.analyze("$ARGUMENTS")
+```
+
+**If score < 60**: Ask up to 4 targeted questions to fill gaps:
+- Problem: What specific issue are we solving?
+- Success Criteria: How do we know when we've succeeded?
+- Stakeholders: Who is affected by this change?
+- Context: What's the background/existing system?
+- Constraints: What limits do we have?
+
+**If score >= 60**: Proceed directly to planning.
+
+Save results to `specs/requirements.md`:
+```markdown
+# Requirements
+
+## Problem Statement
+[Clear description of the problem]
+
+## Success Criteria
+- [Measurable criterion 1]
+- [Measurable criterion 2]
+
+## Stakeholders
+- Primary: [Who is most affected]
+- Secondary: [Who else is impacted]
+
+## Context
+[Background information]
+
+## Constraints
+- Timeline: [Deadline]
+- Technical: [Requirements]
+- Resources: [Budget/team]
+```
+
+## Phase 2: Planning (Use /project:plan)
 
 Spawn a subagent with the `plan-alternatives` skill:
 
 ```
 Task: Plan implementation for "$ARGUMENTS"
 
-Generate 3+ distinct approaches. For each:
-- Architecture overview
-- Pros and cons
-- Complexity estimate
-- Risk assessment
+Based on specs/requirements.md:
+- Generate 3+ distinct approaches
+- For each: Architecture overview, pros/cons, complexity, risks
+- Select the best approach with clear rationale
+- Ensure approach addresses the problem statement and success criteria
 
-Select the best approach with clear rationale.
 Save to specs/plan.md
 ```
 
 Wait for subagent completion. Read specs/plan.md.
 
-## Phase 2: Architecture (Use /project:architect)
+## Phase 3: Architecture (Use /project:architect)
 
 Spawn a subagent with the `architect` skill:
 
@@ -86,7 +131,7 @@ Add all features to specs/features.json with passes: false
 
 Wait for subagent completion. Read specs/architecture.md.
 
-## Phase 3: Implementation Loop (TDD)
+## Phase 4: Implementation Loop (TDD)
 
 For each feature in specs/features.json where passes == false:
 
@@ -107,7 +152,7 @@ Follow TDD:
 
 3. **Track progress** in specs/progress.md.
 
-## Phase 4: Evaluation
+## Phase 5: Evaluation
 
 After implementing core features:
 
@@ -117,7 +162,7 @@ After implementing core features:
 4. If web app, run E2E tests with Puppeteer
 5. Document any failures in specs/bugs.md
 
-## Phase 5: Bug Fixing
+## Phase 6: Bug Fixing
 
 For each bug in specs/bugs.md:
 
@@ -133,7 +178,7 @@ Task: Fix bug: "<bug description>"
 6. Commit fix
 ```
 
-## Phase 6: Simplification
+## Phase 7: Simplification
 
 After all tests pass:
 
@@ -148,12 +193,13 @@ Task: Simplify and refactor the codebase
 5. Ensure tests still pass
 ```
 
-## Phase 7: Final Verification
+## Phase 8: Final Verification
 
 1. Run all tests with coverage
 2. Run E2E tests if applicable
 3. Verify all features in specs/features.json have passes: true
-4. Update specs/progress.md with completion summary
+4. **Verify against success criteria from specs/requirements.md**
+5. Update specs/progress.md with completion summary
 
 ## Completion Criteria
 
@@ -163,6 +209,7 @@ Output `<promise>CYCLE_COMPLETE</promise>` when ALL conditions are met:
 - No known bugs in specs/bugs.md (or all fixed)
 - Linter passes
 - Type checker passes
+- **Success criteria from requirements.md are met**
 
 ## If Blocked
 
@@ -178,7 +225,9 @@ After 10 iterations without progress:
 
 ## Remember
 
+- **Discover first** - Understand the problem before solving it
 - **Commit frequently** - Each passing test = commit
 - **Use subagents** - Keep main context clean
 - **Update features.json** - This drives the loop
 - **Log everything** - specs/progress.md is your memory
+- **Verify success criteria** - Don't just pass tests, solve the problem
