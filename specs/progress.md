@@ -351,3 +351,55 @@
 **Lint:** Clean
 
 ---
+
+### F004: Hierarchical Memory (COMPLETE)
+
+**Note:** This feature was already implemented as part of F003 (Context Pressure Monitoring).
+The context_manager.py module includes full HOT/WARM/COLD tier support with:
+- ContextTier enum with age-based thresholds
+- Tier promotion and demotion
+- Stale entry detection
+- Per-tier context retrieval
+- Checkpoint support for all tiers
+
+**Tests:** 35/35 passing (shared with F003)
+**Lint:** Clean
+
+---
+
+### F006: Effort Estimation and Progress Tracking (COMPLETE)
+
+**Approach:**
+- Created `src/progress_tracker.py` with full TDD cycle
+- Implemented EffortUnit enum for estimation units
+- Implemented ProgressPhase enum for task phases
+- Implemented EffortEstimate for effort estimates with breakdowns
+- Implemented TaskProgress for per-task tracking
+- Implemented VelocityTracker for velocity metrics
+- Implemented ProgressTracker as main tracking class
+
+**Files Created:**
+- `src/progress_tracker.py` - Core progress tracker module (540+ lines)
+- `tests/test_progress_tracker.py` - Comprehensive tests (34 tests, all passing)
+
+**Key Features:**
+- Multiple effort units (story points, hours, days, tokens)
+- Task phases (not_started, planning, in_progress, testing, review, complete)
+- Effort estimates with confidence and phase breakdown
+- Conversion to hours for comparisons
+- Task progress with completion percentage
+- Progress notes and history
+- Time tracking with start/stop timer
+- Estimation accuracy calculation
+- Overdue detection
+- Velocity tracking (points per hour)
+- Rolling velocity and trend detection
+- Completion time estimation
+- Overall progress calculation
+- JSON persistence
+- Integration with dependency graph from F005
+
+**Tests:** 34/34 passing
+**Lint:** Clean
+
+---

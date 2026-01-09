@@ -42,11 +42,11 @@
       "category": "context",
       "description": "Hierarchical memory (hot/warm/cold context)",
       "priority": 2,
-      "status": "pending",
-      "passes": false,
+      "status": "complete",
+      "passes": true,
       "dependencies": ["F003"],
-      "files": [".claude/skills/context-manager/SKILL.md"],
-      "tests": []
+      "files": [".claude/skills/context-manager/SKILL.md", "src/context_manager.py"],
+      "tests": ["tests/test_context_manager.py"]
     },
     {
       "id": "F005",
@@ -64,8 +64,8 @@
       "category": "tracking",
       "description": "Effort estimation and progress tracking",
       "priority": 3,
-      "status": "pending",
-      "passes": false,
+      "status": "complete",
+      "passes": true,
       "dependencies": ["F005"],
       "files": ["src/progress_tracker.py"],
       "tests": ["tests/test_progress_tracker.py"]
