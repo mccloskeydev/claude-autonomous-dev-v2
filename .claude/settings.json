@@ -1,0 +1,69 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pytest*)",
+      "Bash(ruff*)",
+      "Bash(pyright*)",
+      "Bash(bun test*)",
+      "Bash(bun run*)",
+      "Bash(bunx*)",
+      "Bash(npm test*)",
+      "Bash(npm run*)",
+      "Bash(npx*)",
+      "Bash(git*)",
+      "Bash(cat*)",
+      "Bash(ls*)",
+      "Bash(mkdir*)",
+      "Bash(uv*)",
+      "Bash(pip*)",
+      "Bash(python*)",
+      "Read(*)",
+      "Glob(*)",
+      "Grep(*)"
+    ],
+    "deny": [
+      "Bash(rm -rf /)",
+      "Bash(rm -rf ~)",
+      "Bash(curl* | sh)",
+      "Bash(wget* | sh)",
+      "Read(.env)",
+      "Read(*credentials*)",
+      "Read(*secret*)"
+    ]
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": ".claude/hooks/post-edit.sh"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": ".claude/hooks/quality-gate.sh"
+          }
+        ]
+      }
+    ],
+    "SubagentStop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": ".claude/hooks/subagent-complete.sh"
+          }
+        ]
+      }
+    ]
+  }
+}

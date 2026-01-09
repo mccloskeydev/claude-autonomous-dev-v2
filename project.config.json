@@ -1,0 +1,56 @@
+{
+  "stack": "python",
+  "package_manager": "uv",
+  "test_command": "pytest -v",
+  "test_coverage_command": "pytest --cov --cov-report=term-missing",
+  "lint_command": "ruff check --fix .",
+  "format_command": "ruff format .",
+  "type_check_command": "pyright",
+  "build_command": null,
+  "dev_server_command": null,
+  "coverage_threshold": 80,
+  "max_iterations": 50,
+  "circuit_breaker": {
+    "no_progress_threshold": 3,
+    "same_error_threshold": 5,
+    "output_decline_threshold": 70
+  },
+  "completion_promise": "CYCLE_COMPLETE",
+  "stacks": {
+    "python": {
+      "test_command": "pytest -v",
+      "lint_command": "ruff check --fix .",
+      "format_command": "ruff format .",
+      "type_check_command": "pyright"
+    },
+    "typescript": {
+      "test_command": "bun test",
+      "lint_command": "bunx eslint --fix .",
+      "format_command": "bunx prettier --write .",
+      "type_check_command": "bunx tsc --noEmit",
+      "build_command": "bun run build"
+    },
+    "bun": {
+      "test_command": "bun test",
+      "lint_command": "bunx biome check --write .",
+      "format_command": "bunx biome format --write .",
+      "type_check_command": "bunx tsc --noEmit",
+      "build_command": "bun run build"
+    },
+    "node": {
+      "test_command": "npm test",
+      "lint_command": "npm run lint -- --fix",
+      "format_command": "npx prettier --write .",
+      "type_check_command": "npx tsc --noEmit",
+      "build_command": "npm run build"
+    },
+    "react": {
+      "test_command": "bun test",
+      "lint_command": "bunx eslint --fix .",
+      "format_command": "bunx prettier --write .",
+      "type_check_command": "bunx tsc --noEmit",
+      "build_command": "bun run build",
+      "dev_server_command": "bun run dev"
+    }
+  }
+}
