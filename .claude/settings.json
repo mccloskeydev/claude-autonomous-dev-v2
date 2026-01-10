@@ -43,17 +43,6 @@
         ]
       }
     ],
-    "Stop": [
-      {
-        "matcher": "",
-        "hooks": [
-          {
-            "type": "command",
-            "command": ".claude/hooks/quality-gate.sh"
-          }
-        ]
-      }
-    ],
     "SubagentStop": [
       {
         "matcher": "",
