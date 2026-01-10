@@ -1,5 +1,4 @@
 {
-  "disableAllHooks": true,
   "permissions": {
     "allow": [
       "Bash(pytest*)",
