@@ -91,15 +91,49 @@ Use `/project:discovery` or the RequirementsAnalyzer module.
 specs/
 ├── features.json    # Feature status tracking
 ├── progress.md      # Session log
+├── requirements.md  # Problem & requirements (from discovery)
 ├── plan.md          # Current plan
 ├── architecture.md  # Technical design
 ├── bugs.md          # Bug tracking
 └── checkpoint-*.md  # Session handoffs
 
+logs/
+└── sessions/        # CLI input/output logs (git-associated)
+
 ai-docs/             # External documentation
 src/                 # Source code
 tests/               # Test files
 ```
+
+## Session Logging
+
+All CLI sessions are automatically logged with git commit association.
+
+### Log Files
+- **Location:** `logs/sessions/{timestamp}-{sha}-{session}.jsonl`
+- **Contents:** User inputs, timestamps, git HEAD at each input
+- **Index:** `logs/index.json` maps commits to sessions
+
+### Finding Logs by Commit
+```bash
+# Find which session created a commit
+./scripts/find-session-logs.sh abc123f
+
+# List all sessions
+./scripts/find-session-logs.sh --list
+
+# Show latest session
+./scripts/find-session-logs.sh --latest
+
+# Convert to markdown
+./scripts/find-session-logs.sh --format md logs/sessions/file.jsonl
+```
+
+### What's Logged
+- User prompts with timestamps
+- Git HEAD SHA at each input (track changes as they happen)
+- Session start/end markers
+- Commits created during session
 
 ## Quality Gates
 

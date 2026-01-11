@@ -69,8 +69,9 @@ out/
 .next/
 .nuxt/
 
-# Logs
-logs/
+# Logs (keep structure, ignore contents)
+logs/sessions/
+logs/index.json
 *.log
 
 # Temporary

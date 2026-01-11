@@ -1,0 +1,6 @@
+# Ignore session logs (can contain sensitive info)
+sessions/
+index.json
+
+# Keep the directory structure
+!.gitignore
